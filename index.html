@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <title>Connect four game</title>
+</head>
+<body>
+    <main class="main">
+        <div class="choices-container">
+            <img class="logo" src="./assets/images/logo.svg" alt="">
+            <button id="play-btn" class="btn yellow">
+                PLAY VS PLAYER 
+                <img class="btn__img" src="./assets/images/player-vs-player.svg" alt="">
+            </button>
+            <button id="rules-btn" class="btn">GAME RULES</button>
+        </div>
+        <div id="border" class="border display">
+            <header class="header">
+                <div class="row">
+                    <button class="btn-small" id="menu-btn">MENU</button>
+                    <img src="./assets/images/logo.svg" alt="" class="logo">
+                    <button class="btn-small" id="restart-btn">RESTART</button>
+                </div>
+                <div class="row"></div>
+            </header>
+            <div class="game-border" id="game-border">
+                <img class="border__img" src="./assets/images/board-layer-white-small.svg" alt="">
+                <img class="border__img-back" src="./assets/images/board-layer-black-small.svg" alt="">
+            </div>
+            <div class="border-bottom"></div>
+        </div>
+    </main>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
