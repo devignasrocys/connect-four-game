@@ -9,6 +9,7 @@ const player_marker = document.getElementById('player-marker');
 const player_title = document.getElementById('player-title')
 const time_counter = document.getElementById('time-counter');
 let player = 'X';
+let time = 15;
 
 // Functions
 const toggle_display = () => {
@@ -33,30 +34,31 @@ const draw_board = () => {
     }
 };
 
+
 const timer = () => {
-    let time = 15;
-    let my_interval = setInterval(() => {
-        time--;
-        time_counter.innerText = `${time}s`;
-        if(time == 0) {
-            change_player();
-            clearInterval(my_interval);
-        }
-    }, 1000);
-};
+    if(time == 0) {
+        change_player();
+        time = 15;
+        clearInterval(timer);
+    }
+    time_counter.innerText = `${time}s`;
+    time--; 
+}
+
 
 const change_player = () => {
+    time = 15;
+    clearInterval(timer)
     if(player == 'X') {
         player = 'O';
         player_marker.src = './assets/images/yellow.svg'
         player_title.innerText = `PLAYER 2'S TURN`
-        timer()
     } else {
         player = 'X';
         player_marker.src = './assets/images/red.svg'
         player_title.innerText = `PLAYER 1'S TURN`
-        timer()
     }
+    
 };
 
 const draw_marker = (element) => {
@@ -99,8 +101,8 @@ const restart_game = () => {
 // Event listeners
 play_game_btn.addEventListener('click', () => {
     toggle_display();
-    timer();
     draw_board();
+    setInterval(timer, 1000);
     document.querySelectorAll('.column').forEach(column => {
         draw_marker(column);
     });

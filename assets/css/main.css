@@ -103,6 +103,7 @@ li {
 
 .header {
     width: 100%;
+    max-width: 475px;
 }
 
 .header .row {
@@ -157,7 +158,7 @@ li {
 }
 
 .header .player-right {
-    right: -1rem;
+    left: 7.4rem;
 }
 
 .header .player p {
