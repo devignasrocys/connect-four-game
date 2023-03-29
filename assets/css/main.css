@@ -183,6 +183,7 @@ li {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 .border__img {
@@ -228,15 +229,30 @@ li {
     height: 3rem;
     border-radius: 50%;
     z-index: -1;
+    
+}
+
+@keyframes from_top_to_bottom {
+    from {
+        transform: translateY(-500%);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
 
 .circle-X {
     background-color: var(--color-red);
+    animation: from_top_to_bottom .5s ease-out;
+    
 }
 
 .circle-O {
     background-color: var(--color-yellow);
+    animation: from_top_to_bottom .5s ease-out;
 }
+
+
 
 .player-turn {
     display: flex;

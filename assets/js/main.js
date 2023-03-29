@@ -34,7 +34,6 @@ const draw_board = () => {
     }
 };
 
-
 const timer = () => {
     if(time == 0) {
         change_player();
@@ -43,12 +42,11 @@ const timer = () => {
     }
     time_counter.innerText = `${time}s`;
     time--; 
-}
-
+};
 
 const change_player = () => {
     time = 15;
-    clearInterval(timer)
+    clearInterval(timer);
     if(player == 'X') {
         player = 'O';
         player_marker.src = './assets/images/yellow.svg'
@@ -81,8 +79,7 @@ const check_winner_row = () => {
     let counter = 0;
     let columns = document.querySelectorAll('.column');
     for(let i = 0; i < 3; i++) {
-        let circles = columns[i].childNodes
-        
+        let circles = columns[i].childNodes;
         for(let j = 0; j < circles.length; j++) {
             let circles_row = [];
             circles_row.push(columns[i].childNodes);
@@ -96,6 +93,8 @@ const restart_game = () => {
         circle.classList.remove('circle-X');
         circle.classList.remove('circle-O');
     })
+    time = 15;
+    clearInterval(timer);
 };
 
 // Event listeners
