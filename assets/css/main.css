@@ -132,7 +132,7 @@ body,html {
 .game-border {
     position: relative;
     z-index: 5;
-    top: 10rem;
+    top: 5rem;
     width: 21rem;
     display: flex;
     flex-direction: row;
@@ -143,6 +143,7 @@ body,html {
     position: absolute;
     z-index: 2;
     width: 21rem;
+    pointer-events: none;
 }
 
 .border__img-back {
@@ -150,6 +151,7 @@ body,html {
     z-index: -1;
     left: 0;
     top: .01rem;
+    pointer-events: none;
 }
 
 .column {
@@ -166,6 +168,9 @@ body,html {
     background-color: var(--color-purple);
     border-radius: 3.2rem 3.2rem 0 0;
     bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .border.display {
@@ -177,7 +182,6 @@ body,html {
     height: 3rem;
     border-radius: 50%;
     z-index: -1;
-    background-color: var(--color-red);
 }
 
 .circle-X {
@@ -186,4 +190,27 @@ body,html {
 
 .circle-O {
     background-color: var(--color-yellow);
+}
+
+.player-turn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white);
+    z-index: 10;
+}
+
+.player-turn__img {
+    position: absolute;
+    width: 191px;
+    height: 150px;
+    z-index: -1;
+}
+
+
+.player-turn p {
+    font-weight: 700;
+    margin-bottom: .5rem;
+    font-size: var(--font-xs);
 }
