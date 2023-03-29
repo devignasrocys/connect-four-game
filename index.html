@@ -24,7 +24,18 @@
                     <img src="./assets/images/logo.svg" alt="" class="logo">
                     <button class="btn-small" id="restart-btn">RESTART</button>
                 </div>
-                <div class="row"></div>
+                <div class="row">
+                    <div class="player">
+                        <img class="player__img" src="./assets/images/player-one.svg" alt="">
+                        <p class="player__title">PLAYER 1</p>
+                        <p class="player__points">0</p>
+                    </div>
+                    <div class="player">
+                        <img class="player__img player-right" src="./assets/images/player-two.svg" alt="">
+                        <p class="player__title">PLAYER 2</p>
+                        <p class="player__points">0</p>
+                    </div>
+                </div>
             </header>
             <div class="game-border" id="game-border">
                 <img class="border__img" src="./assets/images/board-layer-white-small.svg" alt="">
@@ -37,6 +48,31 @@
                     <h1 id="time-counter"></h1>
                 </div>
             </div>
+        </div>
+        <div class="rules display" id="rules">
+            <h1 class="rules__title">RULES</h1>
+            <p class="rules__p-violet">OBJECTIVE</p>
+            <p class="rules__p">Be the first player to connect 4 of the same colored discs in a row (either vertically, horizontally, or diagonally).</p>
+            <p class="rules__p-violet">HOW TO PLAY</p>
+            <ul class="rules__ol">
+                <li class="rules__li">
+                    <p><b>1</b></p>
+                    <p>Red goes first in the first game.</p>
+                </li>
+                <li class="rules__li">
+                    <p><b>2</b></p>
+                    <p>Players must alternate turns, and only one disc can be dropped in each turn.</p>
+                </li>
+                <li class="rules__li">
+                    <p><b>3</b></p>
+                    <p>The game ends when there is a 4-in-a-row or a stalemate.</p>
+                </li>
+                <li class="rules__li">
+                    <p><b>4</b></p>
+                    <p>The starter of the previous game goes second on  the next game.</p>
+                </li>
+            </ul>
+            <img class="rules__check-icon" id="rules-check-icon" src="./assets/images/icon-check.svg" alt="">
         </div>
     </main>
     <script src="./assets/js/main.js"></script>

@@ -1,6 +1,7 @@
 // Variables
 const play_game_btn = document.getElementById('play-btn');
 const rules_btn = document.getElementById('rules-btn');
+const rules_check_icon = document.getElementById('rules-check-icon');
 const restart_btn = document.getElementById('restart-btn');
 const border = document.getElementById('border');
 const game_border = document.getElementById('game-border');
@@ -13,6 +14,10 @@ let player = 'X';
 const toggle_display = () => {
     document.querySelector('.choices-container').classList.toggle('display');
     border.classList.toggle('display');
+};
+
+const toggle_modal_rules = () => {
+    document.querySelector('.rules').classList.toggle('display');
 };
 
 const draw_board = () => {
@@ -36,10 +41,8 @@ const timer = () => {
         if(time == 0) {
             change_player();
             clearInterval(my_interval);
-            time = 15;
         }
     }, 1000);
-
 };
 
 const change_player = () => {
@@ -102,8 +105,14 @@ play_game_btn.addEventListener('click', () => {
         draw_marker(column);
     });
 });
+
 game_border.addEventListener('click', (e) => {
     change_player();
     check_winner_row();
 });
+
 restart_btn.addEventListener('click', restart_game);
+
+rules_btn.addEventListener('click', toggle_modal_rules);
+
+rules_check_icon.addEventListener('click', toggle_modal_rules);
