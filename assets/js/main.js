@@ -16,6 +16,10 @@ const time_counter = document.getElementById('time-counter');
 let player = 'X';
 let time = 15;
 let interval_id = null;
+let scores = {
+    player1: 0,
+    player2: 0
+}
 
 // Functions
 const toggle_display = () => {
@@ -78,10 +82,59 @@ const draw_marker = (element) => {
         }
         let last_circle = arr_of_circles.slice(-1);
         last_circle[0].classList.add(`circle-${player}`);
+        check_winner();
     })
+    
 };
 
-const check_winner_row = () => {
+const check_winner = () => {
+    let winner = null;
+    let columns = document.querySelectorAll('.column');
+    // check for horizontal win
+    for(let i = 0; i < 4; i++) {
+        for(let j = 0; j < 6; j++) {
+            if(
+                columns[i].childNodes[j].classList.contains(`circle-${player}`) && 
+                columns[i+1].childNodes[j].classList.contains(`circle-${player}`) && 
+                columns[i+2].childNodes[j].classList.contains(`circle-${player}`) && 
+                columns[i+3].childNodes[j].classList.contains(`circle-${player}`)) {
+                winner = player;
+                clearInterval(interval_id);
+                alert(`Player ${player} wins!`);
+                return;
+            }
+        }
+    }   
+    // check for vertical win
+    for(let i = 0; i < 3; i++) {
+        for(let j = 0; j < 6; j++) {
+            if(
+                columns[j].childNodes[i].classList.contains(`circle-${player}`) && 
+                columns[j].childNodes[i+1].classList.contains(`circle-${player}`) && 
+                columns[j].childNodes[i+2].classList.contains(`circle-${player}`) && 
+                columns[j].childNodes[i+3].classList.contains(`circle-${player}`)) {
+                winner = player;
+                clearInterval(interval_id);
+                alert(`Player ${player} wins!`);
+                return;
+            }
+        }
+    }
+    // check for diagonal win
+    for(let i = 5; i > 3; i--) {
+        for(let j = 0; j < 4; j++) {
+            if(
+                columns[j].childNodes[i].classList.contains(`circle-${player}`) && 
+                columns[j+1].childNodes[i-1].classList.contains(`circle-${player}`) && 
+                columns[j+2].childNodes[i-2].classList.contains(`circle-${player}`) && 
+                columns[j+3].childNodes[i-3].classList.contains(`circle-${player}`)) {
+                winner = player;
+                clearInterval(interval_id);
+                alert(`Player ${player} wins!`);
+                return;
+            }
+        }
+    }
 };
 
 const continue_game = () => {
@@ -90,14 +143,13 @@ const continue_game = () => {
 };
 
 const quit_game = () => {
-    document.querySelectorAll('.circle').forEach(circle => {
-        circle.classList.remove('circle-X');
-        circle.classList.remove('circle-O');
-    })
+    document.querySelectorAll('.column').forEach(column => {
+        column.remove();
+    });
     time = 15;
     clearInterval(interval_id);
-    toggle_display();
     menu.classList.toggle('display');
+    toggle_display();
 };
 
 const restart_game = () => {
@@ -122,8 +174,8 @@ play_game_btn.addEventListener('click', () => {
 });
 
 game_border.addEventListener('click', (e) => {
+    check_winner();
     change_player();
-    check_winner_row();
 });
 
 restart_btn.addEventListener('click', restart_game);
