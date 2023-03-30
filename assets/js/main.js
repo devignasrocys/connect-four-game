@@ -3,13 +3,19 @@ const play_game_btn = document.getElementById('play-btn');
 const rules_btn = document.getElementById('rules-btn');
 const rules_check_icon = document.getElementById('rules-check-icon');
 const restart_btn = document.getElementById('restart-btn');
+const continue_game_btn = document.getElementById('continue-btn');
+const restart_btn_2 = document.getElementById('restart-btn-2');
+const quit_btn = document.getElementById('quit-btn');
+const menu_btn = document.getElementById('menu-btn');
+const menu = document.getElementById('menu');
 const border = document.getElementById('border');
 const game_border = document.getElementById('game-border');
 const player_marker = document.getElementById('player-marker');
-const player_title = document.getElementById('player-title')
+const player_title = document.getElementById('player-title');
 const time_counter = document.getElementById('time-counter');
 let player = 'X';
 let time = 15;
+let interval_id = null;
 
 // Functions
 const toggle_display = () => {
@@ -76,16 +82,22 @@ const draw_marker = (element) => {
 };
 
 const check_winner_row = () => {
-    let counter = 0;
-    let columns = document.querySelectorAll('.column');
-    for(let i = 0; i < 3; i++) {
-        let circles = columns[i].childNodes;
-        for(let j = 0; j < circles.length; j++) {
-            let circles_row = [];
-            circles_row.push(columns[i].childNodes);
-        }
-    }
-    console.log(counter);
+};
+
+const continue_game = () => {
+    menu.classList.toggle('display');
+    interval_id = setInterval(timer, 1000);
+};
+
+const quit_game = () => {
+    document.querySelectorAll('.circle').forEach(circle => {
+        circle.classList.remove('circle-X');
+        circle.classList.remove('circle-O');
+    })
+    time = 15;
+    clearInterval(interval_id);
+    toggle_display();
+    menu.classList.toggle('display');
 };
 
 const restart_game = () => {
@@ -94,14 +106,16 @@ const restart_game = () => {
         circle.classList.remove('circle-O');
     })
     time = 15;
-    clearInterval(timer);
+    clearInterval(interval_id);
+    interval_id = setInterval(timer, 1000);
 };
 
 // Event listeners
 play_game_btn.addEventListener('click', () => {
     toggle_display();
     draw_board();
-    setInterval(timer, 1000);
+    let id = setInterval(timer, 1000);
+    interval_id = id;
     document.querySelectorAll('.column').forEach(column => {
         draw_marker(column);
     });
@@ -117,3 +131,17 @@ restart_btn.addEventListener('click', restart_game);
 rules_btn.addEventListener('click', toggle_modal_rules);
 
 rules_check_icon.addEventListener('click', toggle_modal_rules);
+
+menu_btn.addEventListener('click', () => {
+    menu.classList.toggle('display');
+    clearInterval(interval_id);
+});
+
+continue_game_btn.addEventListener('click', continue_game);
+
+restart_btn_2.addEventListener('click', () => {
+    menu.classList.toggle('display');
+    restart_game();
+});
+
+quit_btn.addEventListener('click', quit_game);
