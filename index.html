@@ -28,12 +28,12 @@
                     <div class="player">
                         <img class="player__img" src="./assets/images/player-one.svg" alt="">
                         <p class="player__title">PLAYER 1</p>
-                        <p class="player__points">0</p>
+                        <p class="player__points" id="player-x">0</p>
                     </div>
                     <div class="player">
                         <img class="player__img player-right" src="./assets/images/player-two.svg" alt="">
                         <p class="player__title">PLAYER 2</p>
-                        <p class="player__points">0</p>
+                        <p class="player__points" id="player-o">0</p>
                     </div>
                 </div>
             </header>
@@ -46,6 +46,11 @@
                     <img id="player-marker" class="player-turn__img" src="./assets/images/red.svg"/>
                     <p id="player-title">PLAYER 2'S TURN</p>
                     <h1 id="time-counter">15s</h1>
+                </div>
+                <div class="player-win display">
+                    <p class="player-win-p">PLAYER 1</p>
+                    <h1>WINS</h1>
+                    <button class="play-again" id="play-again">PLAY AGAIN</button>
                 </div>
             </div>
         </div>

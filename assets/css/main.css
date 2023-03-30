@@ -284,6 +284,54 @@ li {
     font-size: var(--font-xs);
 }
 
+.player-turn.display {
+    display: none;
+}
+
+.player-win {
+    background-color: var(--color-white);
+    width: 18rem;
+    z-index: 10;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 3px solid var(--color-black);
+    border-bottom: 12px solid var(--color-black);
+}
+
+
+.player-win p {
+    font-weight: 700;
+}
+
+.player-win h1 {
+    font-size: var(--font-l);
+    margin: .5rem 0 0;
+}
+
+.player-win.display {
+    display: none;
+}
+
+.play-again {
+    background-color: var(--color-violet);
+    color: var(--color-white);
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.play-again:hover {
+    background-color: var(--color-red);
+}
+
+
+
 /* RULES */
 .rules {
     position: absolute;
