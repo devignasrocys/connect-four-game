@@ -94,13 +94,13 @@ const draw_marker = (element) => {
 const player_win = () => {
     document.querySelector('.player-turn').classList.toggle('display');
     document.querySelector('.player-win').classList.toggle('display');
-    document.querySelector('.player-win-p').innerText = `Player ${player} wins!`;
+    document.querySelector('.player-win-p').innerText = `Player ${player=='X' ? 1 : 2} wins!`;
     if (player == 'X') {
         player1.innerText = `${scores.X}`;
     } else {
         player2.innerText = `${scores.O}`;
     }
-}
+};
 
 const check_winner = () => {
     let winner = null;
@@ -182,7 +182,11 @@ const restart_game = () => {
     time = 15;
     clearInterval(interval_id);
     interval_id = setInterval(timer, 1000);
-    player = 'X';
+    scores.X = 0;
+    scores.O = 0;
+    player1.innerText = `${scores.X}`;
+    player2.innerText = `${scores.O}`;
+    if(player=='O') {change_player()}
 };
 
 // Event listeners
@@ -222,7 +226,13 @@ restart_btn_2.addEventListener('click', () => {
 quit_btn.addEventListener('click', quit_game);
 
 play_again_btn.addEventListener('click', () => {
-    restart_game();
+    document.querySelectorAll('.circle').forEach(circle => {
+        circle.classList.remove('circle-X');
+        circle.classList.remove('circle-O');
+    })
+    clearInterval(interval_id);
+    if(player=='O') {change_player()};
+    interval_id = setInterval(timer, 1000);
     document.querySelector('.player-win').classList.toggle('display');
     document.querySelector('.player-turn').classList.toggle('display');
     is_winner = false;
